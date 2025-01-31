@@ -6,6 +6,7 @@ This is a basic simulation of the WCP CC robot ([see here](https://wcproducts.co
 2) Open AdvantageScope.
 3) Go to Help->Use Custom Assets Folder, and select the repo's assets folder.  (There should be one entry for Robot_WcpCC25 inside it, don't select the Robot folder)
 4) Import the AdvantageScope layout (File->Import Layout, and select the repo AdvantageScope_Simulation.json at the root).  This will setup all the entries to make the robot work.
+5) Run the robot code in simulation, and connect AdvantageScope to the simulation.
 
 Yagsl readme (from the baseline) below:
 # Yet Another Generic Swerve Library (YAGSL) Example project
