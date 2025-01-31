@@ -16,8 +16,11 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.simulation.RobotSim;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
+import java.util.function.Supplier;
+
 import swervelib.SwerveInputStream;
 
 /**
@@ -117,7 +120,7 @@ public class RobotContainer
 
     if (RobotBase.isSimulation())
     {
-      drivebase.setDefaultCommand(driveFieldOrientedDirectAngleKeyboard);
+      drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
     } else
     {
       drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
@@ -153,6 +156,15 @@ public class RobotContainer
       driverXbox.rightBumper().onTrue(Commands.none());
     }
 
+    //get a pose for the simulation
+    Supplier<Pose2d> poseGen;
+    if(Robot.isSimulation()) {
+      //use the nice simulated pose for demos
+      poseGen = () -> {return drivebase.getSwerveDrive().getSimulationDriveTrainPose().get();};
+    } else {
+      poseGen = drivebase::getPose;
+    }
+    Robot.getInstance().addPeriodic(new RobotSim(poseGen), 0.02);
   }
 
   /**
