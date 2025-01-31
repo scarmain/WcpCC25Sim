@@ -1,3 +1,13 @@
+# WCP Competitive Concept 2025 Simulation
+This is a basic simulation of the WCP CC robot ([see here](https://wcproducts.com/pages/wcp-competitive-concepts)).  We took their CAD and connected it to AdvantageScope, then added a little physics to make it work.  Almost all the work is in the robot/simulation folder.
+
+## Getting this running
+1) Get the repo and open it in WpiLib 2025.
+2) Open AdvantageScope.
+3) Go to Help->Use Custom Assets Folder, and select the repo's assets folder.  (There should be one entry for Robot_WcpCC25 inside it, don't select the Robot folder)
+4) Import the AdvantageScope layout (File->Import Layout, and select the repo AdvantageScope_Simulation.json at the root).  This will setup all the entries to make the robot work.
+
+Yagsl readme (from the baseline) below:
 # Yet Another Generic Swerve Library (YAGSL) Example project
 
 YAGSL is intended to be an easy implementation of a generic swerve drive that should work for most
